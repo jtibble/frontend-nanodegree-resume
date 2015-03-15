@@ -1,0 +1,18 @@
+{
+    "name": "John Tibble",
+    "role": "Full-time JavaScript and Java Developer",
+    "welcomeMessage": "Welcome to this 'résumé'",
+    "biopic": "http://jtibble.com/img/wedding/pictureOfUs.jpg",
+    "contacts": {
+        "mobileNumber": "0-000-000-0000",
+        "email": "jtibble@gmail.com",
+        "github": "http://github.com/jtibble",
+        "twitter": "http://twitter.com/jtibble",
+        "location": "Ann Arbor, MI"
+    },
+    "skills": [
+        "JavaScript",
+        "Git",
+        "Java"
+    ]
+}

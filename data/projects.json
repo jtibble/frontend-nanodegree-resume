@@ -1,0 +1,21 @@
+{
+    "projects": [
+        {
+            "title": "PA-BTC",
+            "datesWorked": "Christmas Break 2014",
+            "description": "NodeJS services + AngularJS frontend for hosting, joining, funding, and paying out rewards in Planetary Annihilation tournaments, with Bitcoin",
+            "images": [
+                "http://i.imgur.com/hLndJ7Q.png",
+                "http://i.imgur.com/CxvlbeS.png"
+            ]
+        },
+        {
+            "title": "BethJoyPhotos.com",
+            "datesWorked": "Early 2015",
+            "description": "Website/Blog for my wife's photography business",
+            "images": [
+                "http://i.imgur.com/dgD7CaE.png"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,25 @@
+{
+    "jobs": [
+        {
+            "employer": "GE Capital Americas",
+            "title": "Web Developer",
+            "location": "Van Buren Twp, MI",
+            "datesWorked": "Oct 2012 - Present",
+            "description": "Full-time software developer for GE Capital Americas, building lease-origination software for the web and behind-the-scenes systems"
+        },
+        {
+            "employer": "Microsoft Xbox Team",
+            "title": "Web/Native Developer",
+            "location": "Redmond, WA",
+            "datesWorked": "June 2011 - Aug 2012",
+            "description": "Built Xbox 360 web-integration tool and collaborated with Windows Phone OS team to build Xbox-connected games hub experience"
+        },
+        {
+            "employer": "SAIC",
+            "title": "OpenGL Developer",
+            "location": "Ann Arbor, MI",
+            "datesWorked": "2010-2011",
+            "description": "Built C++ software using OpenGL to do graphics-transformation on large images for the US Air Force"
+        }
+    ]
+}
