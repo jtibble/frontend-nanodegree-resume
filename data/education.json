@@ -1,28 +1,20 @@
 {
     "education": [
         {
-            "name": "",
-            "location": "",
-            "degree": "",
-            "majors": "",
-            "datesAttended": "",
-            "url": ""
+            "name": "University of Michigan",
+            "location": "Ann Arbor, MI",
+            "degree": "Bachelor's Degree",
+            "majors": "Computer Science Engineering",
+            "datesAttended": "2007-2011",
+            "url": "http://engin.umich.edu"
         },
         {
-            "name": "",
-            "location": "",
-            "degree": "",
+            "name": "Kalamazoo Area Math and Science Center",
+            "location": "Kalamazoo, MI",
+            "degree": "High School Deploma",
             "majors": "",
-            "datesAttended": "",
-            "url": ""
-        },
-        {
-            "name": "",
-            "location": "",
-            "degree": "",
-            "majors": "",
-            "datesAttended": "",
-            "url": ""
+            "datesAttended": "2005-2007",
+            "url": "http://www.kamsconline.com/"
         }
     ]
 }

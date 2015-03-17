@@ -85,7 +85,7 @@ function logClicks(x,y) {
 }
 
 $(document).click(function(loc) {
-  // your code goes here!
+  logClicks(loc.clientX, loc.clientY);
 });
 
 
@@ -220,8 +220,8 @@ function initializeMap() {
   window.mapBounds = new google.maps.LatLngBounds();
 
   // locations is an array of location strings returned from locationFinder()
-  locations = locationFinder();
-
+  locations = window.locations;
+    
   // pinPoster(locations) creates pins on the map for each location in
   // the locations array
   pinPoster(locations);
@@ -232,12 +232,9 @@ function initializeMap() {
 Uncomment the code below when you're ready to implement a Google Map!
 */
 
-// Calls the initializeMap() function when the page loads
-//window.addEventListener('load', initializeMap);
-
 // Vanilla JS way to listen for resizing of the window
 // and adjust map bounds
-//window.addEventListener('resize', function(e) {
+window.addEventListener('resize', function(e) {
   // Make sure the map bounds get updated on page resize
-//  map.fitBounds(mapBounds);
-//});
+  map.fitBounds(mapBounds);
+});
