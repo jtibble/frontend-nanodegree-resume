@@ -4,35 +4,34 @@ var replaceWithValue = function( globalVariableName, value ){
     return window[globalVariableName].replace('%data%', value);
 }
 
-var processBioJSON = function(bio){
-    $('#header').prepend( replaceWithValue('HTMLheaderRole', bio.role) );
-    $('#header').prepend( replaceWithValue('HTMLheaderName', bio.name) );
-    
-    
-    //Top section
-    $.each(['#topContacts', '#footerContacts'], function(index, target){
-        $(target).append( replaceWithValue('HTMLmobile', bio.contacts.mobileNumber));
-        $(target).append( replaceWithValue('HTMLemail', bio.contacts.email));
-        $(target).append( replaceWithValue('HTMLgithub', bio.contacts.github));
-        $(target).append( replaceWithValue('HTMLtwitter', bio.contacts.twitter));
-        $(target).append( replaceWithValue('HTMLlocation', bio.contacts.location));
-    });
-    
-    $('#header').append( replaceWithValue('HTMLbioPic', bio.biopic) );
-    $('#header').append( replaceWithValue('HTMLwelcomeMsg', bio.welcomeMessage) );
-    
-    $('#header').append( replaceWithValue('HTMLskillsStart', bio.skills[i]) );   
-    
-    for( var i in bio.skills ){
-        $('#header').append( replaceWithValue('HTMLskills', bio.skills[i]) );   
+var renderBio = function(){
+    $('#header').prepend( replaceWithValue('HTMLheaderRole', this.role) );
+    $('#header').prepend( replaceWithValue('HTMLheaderName', this.name) );
+
+    var targets = ['#topContacts', '#footerContacts'];
+    for( var i in targets ){
+        $(targets[i]).append( replaceWithValue('HTMLmobile', this.contacts.mobileNumber));
+        $(targets[i]).append( replaceWithValue('HTMLemail', this.contacts.email));
+        $(targets[i]).append( replaceWithValue('HTMLgithub', this.contacts.github));
+        $(targets[i]).append( replaceWithValue('HTMLtwitter', this.contacts.twitter));
+        $(targets[i]).append( replaceWithValue('HTMLlocation', this.contacts.location));
+    };
+
+    $('#header').append( replaceWithValue('HTMLbioPic', this.biopic) );
+    $('#header').append( replaceWithValue('HTMLwelcomeMsg', this.welcomeMessage) );
+
+    $('#header').append( replaceWithValue('HTMLskillsStart', this.skills[i]) );   
+
+    for( var i in this.skills ){
+        $('#header').append( replaceWithValue('HTMLskills', this.skills[i]) );   
     }
-    
-    locations.push( bio.contacts.location );
+
+    locations.push( this.contacts.location );
 };
 
-var processWorkJSON = function(data){
-    for( var i in data.jobs ){
-        var job = data.jobs[i];
+var renderWork = function(){
+    for( var i in this.jobs ){
+        var job = this.jobs[i];
         
         $('#workExperience').append( HTMLworkStart );
         var employerAndTitle = replaceWithValue( 'HTMLworkEmployer', job.employer) +
@@ -45,10 +44,10 @@ var processWorkJSON = function(data){
     }
 };
 
-var processProjectsJSON = function(data){
+var renderProjects = function(){
     
-    for( var i in data.projects ){
-        var project = data.projects[i];
+    for( var i in this.projects ){
+        var project = this.projects[i];
         
         $('#projects').append( HTMLprojectStart );
         $('#projects .project-entry:last').append( replaceWithValue( 'HTMLprojectTitle', project.title ));
@@ -64,10 +63,10 @@ var processProjectsJSON = function(data){
 
 };
 
-var processEducationJSON = function(data){
+var renderEducation = function(){
     
-    for( var i in data.education){
-        var education = data.education[i];
+    for( var i in this.education){
+        var education = this.education[i];
         
         $('#education').append( HTMLschoolStart );
         
@@ -86,11 +85,26 @@ var processEducationJSON = function(data){
 
 $('#mapDiv').append( window.googleMap );
 
-$.when(
-    $.getJSON('/data/bio.json', {}, processBioJSON),
-    $.getJSON('/data/work.json', {}, processWorkJSON),
-    $.getJSON('/data/projects.json', {}, processProjectsJSON),
-    $.getJSON('/data/education.json', {}, processEducationJSON) 
-).then( initializeMap );
+var bioPromise = $.getJSON('/data/bio.json', function(bio){
+    bio.render = renderBio;
+    bio.render();
+});
+
+var workPromise = $.getJSON('/data/work.json', function(work){
+    work.render = renderWork;
+    work.render();
+});
+
+var projectsPromise = $.getJSON('/data/projects.json', function(projects){
+    projects.render = renderProjects;
+    projects.render();
+});
+
+var educationPromise = $.getJSON('/data/education.json', function(education){
+    education.render = renderEducation;
+    education.render();
+});
+
+$.when( bioPromise, workPromise, projectsPromise, educationPromise ).then( initializeMap );
 
 
