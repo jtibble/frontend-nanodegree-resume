@@ -85,22 +85,22 @@ var renderEducation = function(){
 
 $('#mapDiv').append( window.googleMap );
 
-var bioPromise = $.getJSON('/data/bio.json', function(bio){
+var bioPromise = $.getJSON('data/bio.json', function(bio){
     bio.render = renderBio;
     bio.render();
 });
 
-var workPromise = $.getJSON('/data/work.json', function(work){
+var workPromise = $.getJSON('data/work.json', function(work){
     work.render = renderWork;
     work.render();
 });
 
-var projectsPromise = $.getJSON('/data/projects.json', function(projects){
+var projectsPromise = $.getJSON('data/projects.json', function(projects){
     projects.render = renderProjects;
     projects.render();
 });
 
-var educationPromise = $.getJSON('/data/education.json', function(education){
+var educationPromise = $.getJSON('data/education.json', function(education){
     education.render = renderEducation;
     education.render();
 });
