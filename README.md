@@ -1,4 +1,4 @@
 ### At the end
 
 My résumé looks like this:
-![](http://imgur.com/ODn3YcI)
+![](http://i.imgur.com/VDuTXOb.png)
